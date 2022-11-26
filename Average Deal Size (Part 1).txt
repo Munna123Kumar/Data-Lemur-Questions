@@ -1,0 +1,4 @@
+--------------Average Deal Size (Part 1)---------------------------
+
+SELECT round(avg(num_seats*yearly_seat_cost),2) average_deal_size
+FROM contracts;
