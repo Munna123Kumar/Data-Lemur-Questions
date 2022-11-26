@@ -1,0 +1,12 @@
+------------Frequently Purchased Pairs-----------------------------
+
+with n as (SELECT t.transaction_id,t.product_id,t.user_id,p.product_name 
+FROM transactions t
+JOIN products p
+on t.product_id=p.product_id)
+
+SELECT count(*)
+FROM N as t1
+inner join N as t2
+on t1.transaction_id=t2.transaction_id
+and t1.product_id>t2.product_id
