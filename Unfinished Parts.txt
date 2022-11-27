@@ -1,0 +1,5 @@
+-----------------------Unfinished Parts----------------
+SELECT part 
+FROM parts_assembly
+WHERE finish_date is NULL
+GROUP BY part
