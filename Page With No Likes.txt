@@ -1,0 +1,7 @@
+-------------------Page With No Likes---------------
+SELECT p.page_id
+FROM pages p
+left JOIN page_likes pl
+on p.page_id=pl.page_id
+WHERE pl.liked_date is NULL
+ORDER BY p.page_id
