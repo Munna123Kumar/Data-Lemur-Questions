@@ -1,0 +1,17 @@
+------------------------Odd and Even Measurements--------------
+
+WITH
+detailed_measurements AS
+(SELECT
+  CAST(measurement_time as date) as measurement_day,
+  measurement_value,
+  ROW_NUMBER() OVER(
+  PARTITION BY CAST(measurement_time as date) ORDER BY measurement_time) as measurement_num
+FROM measurements)
+
+
+SELECT  measurement_day,
+ SUM(CASE WHEN measurement_num%2 !=0 THEN measurement_value ELSE 0 END) AS odd_sum,
+ SUM(CASE WHEN measurement_num%2=0 THEN measurement_value ELSE 0 END) AS even_sum
+FROM detailed_measurements
+GROUP BY measurement_day
